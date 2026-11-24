@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@theme { --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif; --font-display: "Syne", ui-sans-serif, system-ui, sans-serif; --font-mono: "JetBrains Mono", ui-monospace, monospace; }
+:root { color-scheme: dark; font-family:var(--font-sans); background:#0b0d12; color:#e8edf4; }
+html { scroll-behavior:smooth; scroll-padding-top:6rem; }
+body { margin:0; min-width:320px; }
+::selection { background:#e8e96a; color:#111; }
+:focus-visible { outline:2px solid #e8e96a; outline-offset:4px; }
+.hero-grid { background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(#000,transparent); }
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto} *,*::before,*::after{transition:none!important;animation:none!important}}
