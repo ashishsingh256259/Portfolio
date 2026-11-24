@@ -16,6 +16,9 @@ jobs:
       - run: npm test
       - run: npm run build
       - run: test -f dist/index.html && test -s dist/Ashish_Singh_Resume.pdf
+      - run: npm install --no-save --package-lock=false @playwright/test@1.56.1
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test tests/browser.spec.mjs --workers=1
       - uses: actions/upload-artifact@v4
         with:
           name: portfolio-v2-build
