@@ -44,6 +44,10 @@ I am currently exploring:
 
 ---
 
+## 🏆 Highlight
+
+**SEGUE 3.0 Diversity Champion Award** — UrbanPulse Guardian AI, ₹25,000 team prize (2026).
+
 ## 🚀 Featured Projects
 
 ### 🔥 ThermoGuard AI
@@ -62,7 +66,7 @@ ThermoGuard AI combines intelligent analysis, geospatial data, mapping, and mach
 **Tech Stack:** React, TypeScript, FastAPI, PostgreSQL/PostGIS, Machine Learning, Leaflet
 
 🔗 **Live Demo:** https://thermoguard-ai.ai.studio  
-🔗 **GitHub:** https://github.com/ashi256259/ThermoGuard
+🔗 **GitHub:** https://github.com/ashi256259/ThermoGuard-Ai
 
 ---
 
@@ -83,7 +87,7 @@ UrbanPulse Guardian AI focuses on helping cities understand infrastructure and u
 **Tech Stack:** React, TypeScript, Gemini API, AI Studio and modern web technologies
 
 🔗 **Live Demo:** https://urbanpulse-guardian-ai.ai.studio  
-🔗 **GitHub:** https://github.com/ashishsingh256259/URBAN
+🔗 **GitHub:** https://github.com/ashishsingh256259/Urban-Pulse
 
 ---
 
