@@ -1,9 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
-const vm = require('node:vm');
-const html = fs.readFileSync('index.html','utf8');
-test('inline scripts compile', () => { const scripts = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)]; assert.ok(scripts.length); for (const m of scripts) new vm.Script(m[1]); });
-test('navigation section anchors resolve', () => {const ids = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1])); for (const m of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.has(m[1]),m[1]);});
-test('award and merged FORGE evidence present', () => {assert.match(html,/Diversity Champion Award/); assert.match(html,/₹25,000 team prize/); assert.match(html,/github\.com\/ashishsingh256259\/Mentor\/pull\/1/);});
-test('project data and featured ordering', () => {const code=html.match(/const featuredProjects = \[[\s\S]*?const githubData =/)[0].replace(/const githubData =$/,'');const data=vm.runInNewContext(code+'\n;({ featuredProjects, additionalProjects })');assert.equal(data.featuredProjects.length,5);assert.equal(data.additionalProjects.length,3);assert.equal(data.featuredProjects.find(p=>p.number==='01').name,'UrbanPulse Guardian AI');for(const p of [...data.featuredProjects,...data.additionalProjects]){assert.ok(p.github.startsWith('https://github.com/'));assert.ok(p.live.startsWith('https://'));}});
+const data = import('../src/data.mjs');
+test('eight unique projects and UrbanPulse first', async()=>{const {featuredProjects,additionalProjects}=await data;const all=[...featuredProjects,...additionalProjects];assert.equal(all.length,8);assert.equal(new Set(all.map(p=>p.name)).size,8);assert.equal(featuredProjects.find(p=>p.number==='01').name,'UrbanPulse Guardian AI');});
+test('valid project links and evidence', async()=>{const {featuredProjects,additionalProjects}=await data;for(const p of [...featuredProjects,...additionalProjects]){assert.equal(new URL(p.github).hostname,'github.com');assert.equal(new URL(p.live).protocol,'https:');assert.ok(p.features.length&&p.stack.length);}assert.match(featuredProjects.find(p=>p.name==='FORGE').evidence,/Mentor\/pull\/1$/);});
+test('award and React entry preserved',async()=>{const {achievements}=await data;assert.ok(achievements.some(a=>a.name.includes('Diversity Champion Award')&&a.org.includes('₹25,000')));assert.match(fs.readFileSync('index.html','utf8'),/src="\/src\/main.jsx"/);assert.ok(fs.existsSync('Ashish_Singh_Resume.pdf'));});
