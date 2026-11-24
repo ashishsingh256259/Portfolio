@@ -311,3 +311,8 @@ Backend & APIs
 System Design
    ↓
 Cloud Deployment
+
+
+## Portfolio V2 development
+
+React 19 + Vite + Tailwind CSS. Use Node.js 22. Run `npm install`, `npm run dev`, `npm test`, and `npm run build`. The production output is `dist/`, including the existing resume PDF. Vercel configuration builds the Vite app; GitHub Pages must deploy `dist/` rather than serving unbuilt source. Validate the new deployment before switching production.
